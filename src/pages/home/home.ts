@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { BlocktrailService } from '../../services/blocktrail.service';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
+  constructor(public blocktrailService: BlocktrailService) {
+    this.blocktrailService.getBlocks().then(rsp => {
+      console.log('response:', rsp);
+    });
   }
-
 }
