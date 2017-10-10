@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { BlockPage } from '../pages/block/block';
 import { TransactionPage } from '../pages/transaction/transaction';
+import { AddressPage } from '../pages/address/address';
 import { BlocktrailService } from '../services/blocktrail.service';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BlocktrailService } from '../services/blocktrail.service';
     MyApp,
     HomePage,
     BlockPage,
-    TransactionPage
+    TransactionPage,
+    AddressPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { BlocktrailService } from '../services/blocktrail.service';
     MyApp,
     HomePage,
     BlockPage,
-    TransactionPage
+    TransactionPage,
+    AddressPage
   ],
   providers: [
     StatusBar,

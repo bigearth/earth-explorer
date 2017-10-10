@@ -16,4 +16,9 @@
       <p>{{ transaction.time }}</p>
     </ion-item>
   </ion-card>
+  <ion-list>
+    <button ion-item *ngFor="let input of transaction.inputs" (click)="addressSelected($evt, input.address)">
+      {{ input.address }}
+    </button>
+  </ion-list>
 </ion-content>

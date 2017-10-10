@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import Blocktrail from 'blocktrail-sdk';
-import { Block } from './block';
 
 @Injectable()
 export class BlocktrailService {
@@ -31,5 +30,13 @@ export class BlocktrailService {
 
   getTransaction(transaction: string): Promise<any>{
     return this.client.transaction(transaction, (err, block) => {});
+  }
+
+  getAddress(address: string): Promise<any>{
+    return this.client.address(address, (err, block) => {});
+  }
+
+  getAddressTransactions(address: string): Promise<any>{
+    return this.client.addressTransactions(address, (err, block) => {});
   }
 }
