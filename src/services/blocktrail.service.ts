@@ -17,8 +17,6 @@ export class BlocktrailService {
   getBlocks(): Promise<any>{
     return this.client.allBlocks({
       sort_dir: 'desc'
-    }, (err, blocks) => {
-      return blocks;
-    });
+    }, (err, blocks) => {});
   }
 }

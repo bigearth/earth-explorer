@@ -1,14 +1,102 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      EARTH Explorer
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div *ngFor='let block of blocks'>
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon name="square"></ion-icon>
+        </ion-avatar>
+        <h2>{{ block.height }}</h2>
+        <p>{{ block.block_time }}</p>
+      </ion-item>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Hash: {{ block.hash }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Height: {{ block.height }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Difficulty: {{ block.difficulty }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Merkleroot: {{ block.merkleroot }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Orphan: {{ block.is_orphan }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Prev Block: {{ block.prev_block }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Next Block: {{ block.next_block }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Byte Size: {{ block.byte_size }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Confirmations: {{ block.confirmations }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Transactions: {{ block.transactions }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Value: {{ block.value }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_name'>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Miningpool Name: {{ block.miningpool_name }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_url'>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Miningpool Url: {{ block.miningpool_url }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_slug'>
+            <ion-icon name="leaf" item-start></ion-icon>
+              Miningpool Slug: {{ block.miningpool_slug }}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 </ion-content>
