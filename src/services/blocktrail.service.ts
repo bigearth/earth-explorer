@@ -28,4 +28,8 @@ export class BlocktrailService {
   getBlockTransactions(block: number | string): Promise<any>{
     return this.client.blockTransactions(block, (err, block) => {});
   }
+
+  getTransaction(transaction: string): Promise<any>{
+    return this.client.transaction(transaction, (err, block) => {});
+  }
 }

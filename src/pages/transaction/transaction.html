@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      EARTH Explorer
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf='transaction' padding>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon name="square"></ion-icon>
+      </ion-avatar>
+      <h2>{{ transaction.hash }}</h2>
+      <p>{{ transaction.time }}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>

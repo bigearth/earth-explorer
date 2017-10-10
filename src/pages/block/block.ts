@@ -3,6 +3,7 @@ import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
 import { Transaction } from '../../services/transaction';
 import { NavController, NavParams } from 'ionic-angular';
+import { TransactionPage } from '../transaction/transaction';
 
 @Component({
   selector: 'block',
@@ -18,13 +19,19 @@ export class BlockPage {
     public blocktrailService: BlocktrailService
   ) {
     this.selectedBlock = navParams.get('block');
-    
+
     this.blocktrailService.getBlock(this.selectedBlock).then(rsp => {
       this.block = rsp;
     });
 
     this.blocktrailService.getBlockTransactions(this.selectedBlock).then(rsp => {
       this.transactions = rsp.data;
+    });
+  }
+
+  transactionTapped(event, transaction) {
+    this.navCtrl.push(TransactionPage, {
+      transaction: transaction.hash
     });
   }
 }

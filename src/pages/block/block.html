@@ -88,7 +88,7 @@
     </ion-row>
 
   </ion-card>
-  <div *ngFor='let transaction of transactions'>
+  <div *ngFor='let transaction of transactions' (click)="transactionTapped($evt, transaction)">
     <div *ngIf='transactions'>
       <ion-card>
         <ion-item>
