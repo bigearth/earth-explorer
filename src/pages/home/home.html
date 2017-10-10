@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor='let block of blocks'>
+  <button ion-item *ngFor="let block of blocks" (click)="blockTapped($evt, block)">
     <ion-card>
       <ion-item>
         <ion-avatar item-start>
@@ -25,10 +25,6 @@
           </ion-item>
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
-              Height: {{ block.height }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
               Difficulty: {{ block.difficulty }}
           </ion-item>
           <ion-item>
@@ -37,27 +33,11 @@
           </ion-item>
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
-              Orphan: {{ block.is_orphan }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
               Prev Block: {{ block.prev_block }}
           </ion-item>
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
               Next Block: {{ block.next_block }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Byte Size: {{ block.byte_size }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Confirmations: {{ block.confirmations }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Transactions: {{ block.transactions }}
           </ion-item>
           <ion-item>
             <ion-icon name="leaf" item-start></ion-icon>
@@ -82,21 +62,32 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>
-            <div>12 Likes</div>
+            <div>{{ block.transactions }} Transactions</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="text"></ion-icon>
-            <div>4 Comments</div>
+            <div>{{ block.confirmations }} Confirmations</div>
           </button>
         </ion-col>
-        <ion-col center text-center>
-          <ion-note>
-            11h ago
-          </ion-note>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{ block.is_orphan }} Orphan</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button  ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>{{ block.byte_size }} Bytes</div>
+          </button>
         </ion-col>
       </ion-row>
+
     </ion-card>
-  </div>
+  </button>
 </ion-content>

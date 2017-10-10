@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BlocktrailService } from '../../services/blocktrail.service';
-import { Block} from '../../services/block';
+import { Block } from '../../services/block';
+import { NavController } from 'ionic-angular';
+import { BlockPage } from '../block/block';
 
 @Component({
   selector: 'page-home',
@@ -8,10 +10,15 @@ import { Block} from '../../services/block';
 })
 export class HomePage {
   blocks: Block[];
-  constructor(public blocktrailService: BlocktrailService) {
+  constructor(public navCtrl: NavController, public blocktrailService: BlocktrailService) {
     this.blocktrailService.getBlocks().then(rsp => {
       this.blocks = rsp.data;
-      console.log(this.blocks);
+    });
+  }
+
+  blockTapped(event, block) {
+    this.navCtrl.push(BlockPage, {
+      block: block.height
     });
   }
 }
