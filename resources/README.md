@@ -5,5 +5,3 @@ Bitcoin Cash block explorer built w/ [Angular](https://angular.io/) and [Ionic](
 Available under the MIT License.
 
 Bitcoin Cash donations welcome at 14xYtMKXSdJ5TKwTcdXkbPAwsnuEkhGJ6b.
-
-test
