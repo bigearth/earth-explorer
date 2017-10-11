@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { BlockPage } from '../pages/block/block';
 import { TransactionPage } from '../pages/transaction/transaction';
 import { AddressPage } from '../pages/address/address';
 import { BlocktrailService } from '../services/blocktrail.service';
@@ -15,7 +14,6 @@ import { BlocktrailService } from '../services/blocktrail.service';
   declarations: [
     MyApp,
     HomePage,
-    BlockPage,
     TransactionPage,
     AddressPage
   ],
@@ -27,7 +25,6 @@ import { BlocktrailService } from '../services/blocktrail.service';
   entryComponents: [
     MyApp,
     HomePage,
-    BlockPage,
     TransactionPage,
     AddressPage
   ],

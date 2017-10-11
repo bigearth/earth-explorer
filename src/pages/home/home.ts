@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-
 import { NavController } from 'ionic-angular';
 
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
-import { BlockPage } from '../block/block';
 
 @Component({
   selector: 'page-home',
@@ -19,8 +17,8 @@ export class HomePage {
   }
 
   blockSelected(event, block) {
-    this.navCtrl.push(BlockPage, {
-      block: block.height
+    this.navCtrl.push('BlockPage', {
+      blockId: block.height
     });
   }
 }

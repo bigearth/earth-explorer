@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
 import { Transaction } from '../../services/transaction';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { TransactionPage } from '../transaction/transaction';
 
+@IonicPage({
+  segment: 'blocks/:blockId'
+})
 @Component({
   selector: 'page-block',
   templateUrl: 'block.html'
@@ -18,7 +21,7 @@ export class BlockPage {
     public navParams: NavParams,
     public blocktrailService: BlocktrailService
   ) {
-    this.selectedBlock = navParams.get('block');
+    this.selectedBlock = navParams.get('blockId');
 
     this.blocktrailService.getBlock(this.selectedBlock).then(rsp => {
       this.block = rsp;
