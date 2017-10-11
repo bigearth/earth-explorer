@@ -6,16 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TransactionPage } from '../pages/transaction/transaction';
-import { AddressPage } from '../pages/address/address';
 import { BlocktrailService } from '../services/blocktrail.service';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    TransactionPage,
-    AddressPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -24,9 +20,7 @@ import { BlocktrailService } from '../services/blocktrail.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    TransactionPage,
-    AddressPage
+    HomePage
   ],
   providers: [
     StatusBar,

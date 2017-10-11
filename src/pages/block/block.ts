@@ -3,7 +3,6 @@ import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
 import { Transaction } from '../../services/transaction';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-import { TransactionPage } from '../transaction/transaction';
 
 @IonicPage({
   segment: 'blocks/:blockId'
@@ -33,8 +32,8 @@ export class BlockPage {
   }
 
   transactionSelected(event, transaction) {
-    this.navCtrl.push(TransactionPage, {
-      transaction: transaction.hash
+    this.navCtrl.push('TransactionPage', {
+      transactionId: transaction.hash
     });
   }
 }

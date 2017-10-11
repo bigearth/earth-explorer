@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { Transaction } from '../../services/transaction';
-import { NavController, NavParams } from 'ionic-angular';
-import { AddressPage } from '../address/address';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
+@IonicPage({
+  segment: 'transactions/:transactionId'
+}
 @Component({
   selector: 'transaction',
   templateUrl: 'transaction.html'
@@ -16,7 +18,7 @@ export class TransactionPage {
     public navParams: NavParams,
     public blocktrailService: BlocktrailService
   ) {
-    this.selectedTransaction = navParams.get('transaction');
+    this.selectedTransaction = navParams.get('transactionId');
 
     this.blocktrailService.getTransaction(this.selectedTransaction).then(rsp => {
       this.transaction = rsp;
@@ -25,8 +27,8 @@ export class TransactionPage {
 
   addressSelected(event, address) {
     if(address !== null) {
-      this.navCtrl.push(AddressPage, {
-        address: address
+      this.navCtrl.push('AddressPage', {
+        addressId: address
       });
     }
   }
