@@ -1,1 +1,114 @@
-Address
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf='address'>Address {{ address.address }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf='address'>
+    <ion-card>
+      <ion-item>
+        <h2>
+          <ion-icon name="square"></ion-icon> Address: {{ address.address }}
+        </h2>
+      </ion-item>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="apps" item-start></ion-icon>
+            Hash160: {{ address.hash160 }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="cash" item-start></ion-icon>
+            balance: {{ (address.balance / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+            received: {{ (address.received / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+            sent: {{ (address.sent / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+            unconfirmed_received: {{ (address.unconfirmed_received / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+            unconfirmed_sent: {{ (address.unconfirmed_sent / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="card" item-start></ion-icon>
+            unconfirmed_transactions: {{ address.unconfirmed_transactions | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+            total_transactions_in: {{ address.total_transactions_in | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+            total_transactions_out: {{ address.total_transactions_out | number }}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <div *ngFor='let transaction of transactions'>
+      <div *ngIf='transactions'>
+        <ion-card>
+          <ion-item>
+            <h2>
+              <button large ion-button icon-left clear (click)="transactionSelected($evt, transaction)">
+                <ion-icon name="card"></ion-icon>
+                <div>{{ transaction.hash }}</div>
+              </button>
+              </h2>
+            <p>{{ transaction.time | date:'medium' }}</p>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-icon name="cash" item-start></ion-icon>
+                Value: {{ (transaction.estimated_value / 100000000) | number }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+                Inputs:
+                <ion-badge item-end>{{ transaction.inputs.length }}</ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+                Outputs:
+                <ion-badge item-end>{{ transaction.outputs.length }}</ion-badge>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col>
+              <div padding-left icon-left clear small>
+                <ion-icon name="resize" color='primary'></ion-icon> {{ transaction.size }} Bytes
+              </div>
+            </ion-col>
+            <ion-col>
+              <div *ngIf='transaction.is_coinbase' padding-left icon-left clear small color='primary'>
+                <ion-icon name="barcode" color='secondary'></ion-icon>Coinbase
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

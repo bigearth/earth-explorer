@@ -6,7 +6,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TransactionPage } from '../transaction/transaction';
 
 @Component({
-  selector: 'address',
+  selector: 'page-address',
   templateUrl: 'address.html'
 })
 export class AddressPage {
