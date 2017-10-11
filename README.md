@@ -1,4 +1,4 @@
-## explorer.EARTH
+## [explorer.EARTH](http://www.explorer.earth)
 
 Bitcoin Cash block explorer built w/ [Angular](https://angular.io/) and [Ionic](https://ionicframework.com/).
 
