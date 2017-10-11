@@ -24,8 +24,10 @@ export class TransactionPage {
   }
 
   addressSelected(event, address) {
-    this.navCtrl.push(AddressPage, {
-      address: address
-    });
+    if(address !== null) {
+      this.navCtrl.push(AddressPage, {
+        address: address
+      });
+    }
   }
 }

@@ -1,24 +1,80 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      EARTH Explorer
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf='transaction'>Transaction {{ transaction.hash }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf='transaction' padding>
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <ion-icon name="square"></ion-icon>
-      </ion-avatar>
-      <h2>{{ transaction.hash }}</h2>
-      <p>{{ transaction.time }}</p>
-    </ion-item>
-  </ion-card>
-  <ion-list>
-    <button ion-item *ngFor="let input of transaction.inputs" (click)="addressSelected($evt, input.address)">
-      {{ input.address }}
-    </button>
-  </ion-list>
+<ion-content>
+  <div *ngIf='transaction'>
+    <ion-card>
+      <ion-item>
+        <h2 large icon-left clear>
+          <ion-icon name="card"></ion-icon> Transaction: {{ transaction.hash }}
+        </h2>
+        <p>{{ transaction.time | date:'medium' }}</p>
+      </ion-item>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="cash" item-start></ion-icon>
+            Value: {{ (transaction.estimated_value / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="checkbox" item-start></ion-icon>
+            Confirmations: <ion-badge item-end>{{ transaction.confirmations}}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+            Input Value: {{ (transaction.total_input_value / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+            Output Value: {{ (transaction.total_output_value / 100000000) | number }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="arrow-up" item-start></ion-icon>
+            Fee: {{ (transaction.total_fee / 100000000) | number }}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-list no-lines>
+        <ion-list-header>
+          Inputs
+        </ion-list-header>
+        <ion-item *ngFor="let input of transaction.inputs" (click)="addressSelected($evt, input.address)">
+          {{ input.address === null ? 'Coinbase' : input.address }}
+          <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+        <ion-list-header>
+          Outputs
+        </ion-list-header>
+        <ion-item *ngFor="let output of transaction.outputs" (click)="addressSelected($evt, output.address)">
+          {{ output.address }}
+          <ion-icon name="arrow-forward" item-end></ion-icon>
+        </ion-item>
+      </ion-list>
+      <ion-row>
+        <ion-col>
+          <div padding-left icon-left clear small>
+            <ion-icon name="resize" color='primary'></ion-icon> {{ transaction.size }} Bytes
+          </div>
+        </ion-col>
+        <ion-col>
+          <div *ngIf='transaction.is_coinbase' padding-left icon-left clear small color='primary'>
+            <ion-icon name="barcode" color='secondary'></ion-icon>Coinbase
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
 </ion-content>

@@ -5,7 +5,7 @@
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title *ngIf='block'>Block {{ block.height }}</ion-title>
+    <ion-title *ngIf='block'>Block {{ block.height | number }}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal">
         <ion-icon name="qr-scanner"></ion-icon>
@@ -21,7 +21,7 @@
         <h2>
           <button large ion-button icon-left clear (click)="blockSelected($evt, block)">
             <ion-icon name="square"></ion-icon>
-            <div>Block Height: {{ block.height }}</div>
+            <div>Block Height: {{ block.height | number }}</div>
           </button>
           </h2>
         <p>{{ block.block_time | date:'medium' }}</p>
@@ -53,7 +53,7 @@
           </ion-item>
           <ion-item>
             <ion-icon name="cash" item-start></ion-icon>
-            Value: {{ block.value }}
+            Value: {{ (block.value / 100000000) | number }}
           </ion-item>
           <ion-item *ngIf='block.miningpool_name'>
             <ion-icon name="link" item-start></ion-icon>
@@ -93,7 +93,7 @@
             <ion-list>
               <ion-item>
                 <ion-icon name="cash" item-start></ion-icon>
-                Value: {{ transaction.estimated_value }}
+                Value: {{ (transaction.estimated_value / 100000000) | number }}
               </ion-item>
               <ion-item>
                 <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
