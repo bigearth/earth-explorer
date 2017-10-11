@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+
+import { NavController } from 'ionic-angular';
+
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
-import { NavController } from 'ionic-angular';
 import { BlockPage } from '../block/block';
 
 @Component({
@@ -16,7 +18,7 @@ export class HomePage {
     });
   }
 
-  blockTapped(event, block) {
+  blockSelected(event, block) {
     this.navCtrl.push(BlockPage, {
       block: block.height
     });
