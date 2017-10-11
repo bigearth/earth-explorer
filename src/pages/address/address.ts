@@ -29,7 +29,7 @@ export class AddressPage {
     });
   }
 
-  transactionTapped(event, transaction) {
+  transactionSelected(event, transaction) {
     this.navCtrl.push(TransactionPage, {
       transaction: transaction.hash
     });
