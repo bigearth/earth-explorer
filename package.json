@@ -1,9 +1,8 @@
 {
-  "name": "explorer",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
+  "name": "explorer.EARTH",
+  "version": "0.1.1",
+  "author": "Gabriel Cardona",
+  "homepage": "http://www.explorer.earth/",
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
@@ -38,5 +37,5 @@
   },
   "devDependencies": {
   },
-  "description": "An Ionic project"
+  "description": "Bitcoin Cash block explorer"
 }
