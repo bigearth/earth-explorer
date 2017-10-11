@@ -1,9 +1,17 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      EARTH Explorer
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>EARTH Explorer</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -46,16 +54,8 @@
               Value: {{ block.value }}
           </ion-item>
           <ion-item *ngIf='block.miningpool_name'>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Name: {{ block.miningpool_name }}
-          </ion-item>
-          <ion-item *ngIf='block.miningpool_url'>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Url: {{ block.miningpool_url }}
-          </ion-item>
-          <ion-item *ngIf='block.miningpool_slug'>
-            <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Slug: {{ block.miningpool_slug }}
+            <ion-icon name="link" item-start></ion-icon>
+              Miningpool Name: <a href="{{block.miningpool_url}}">{{ block.miningpool_name }}</a>
           </ion-item>
         </ion-list>
       </ion-card-content>

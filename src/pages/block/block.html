@@ -1,175 +1,164 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      EARTH Explorer
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf='block'>Block {{ block.height }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf='block' padding>
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <ion-icon name="square"></ion-icon>
-      </ion-avatar>
-      <h2>{{ block.height }}</h2>
-      <p>{{ block.block_time }}</p>
-    </ion-item>
-
-    <ion-card-content>
-      <ion-list>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Hash: {{ block.hash }}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Difficulty: {{ block.difficulty }}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Merkleroot: {{ block.merkleroot }}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Prev Block: {{ block.prev_block }}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Next Block: {{ block.next_block }}
-        </ion-item>
-        <ion-item>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Value: {{ block.value }}
-        </ion-item>
-        <ion-item *ngIf='block.miningpool_name'>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Miningpool Name: {{ block.miningpool_name }}
-        </ion-item>
-        <ion-item *ngIf='block.miningpool_url'>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Miningpool Url: {{ block.miningpool_url }}
-        </ion-item>
-        <ion-item *ngIf='block.miningpool_slug'>
-          <ion-icon name="leaf" item-start></ion-icon>
-          Miningpool Slug: {{ block.miningpool_slug }}
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>{{ block.transactions }} Transactions</div>
-          </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>{{ block.confirmations }} Confirmations</div>
-          </button>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>{{ block.is_orphan }} Orphan</div>
-          </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>{{ block.byte_size }} Bytes</div>
-          </button>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
-  <div *ngFor='let transaction of transactions' (click)="transactionTapped($evt, transaction)">
-    <div *ngIf='transactions'>
-      <ion-card>
-        <ion-item>
-          <ion-avatar item-start>
+<ion-content>
+  <div *ngIf='block'>
+    <ion-card>
+      <ion-item>
+        <h2>
+          <button large ion-button icon-left clear (click)="blockSelected($evt, block)">
             <ion-icon name="square"></ion-icon>
-          </ion-avatar>
-          <h2>{{ transaction.hash }}</h2>
-          <p>{{ transaction.time }}</p>
-        </ion-item>
+            <div>Block Height: {{ block.height }}</div>
+          </button>
+          </h2>
+        <p>{{ block.block_time | date:'medium' }}</p>
+      </ion-item>
 
-        <ion-card-content>
-          <ion-list>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Hash: {{ block.hash }}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Difficulty: {{ block.difficulty }}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Merkleroot: {{ block.merkleroot }}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Prev Block: {{ block.prev_block }}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Next Block: {{ block.next_block }}
-            </ion-item>
-            <ion-item>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Value: {{ block.value }}
-            </ion-item>
-            <ion-item *ngIf='block.miningpool_name'>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Name: {{ block.miningpool_name }}
-            </ion-item>
-            <ion-item *ngIf='block.miningpool_url'>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Url: {{ block.miningpool_url }}
-            </ion-item>
-            <ion-item *ngIf='block.miningpool_slug'>
-              <ion-icon name="leaf" item-start></ion-icon>
-              Miningpool Slug: {{ block.miningpool_slug }}
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="apps" item-start></ion-icon>
+            Hash: {{ block.hash }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="card" item-start></ion-icon>
+            Transactions:
+            <ion-badge item-end>{{ block.transactions }}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="checkbox" item-start></ion-icon>
+            Confirmations:
+            <ion-badge item-end>{{ block.confirmations}}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="lock" item-start></ion-icon>
+            Difficulty: {{ block.difficulty }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="contract" item-start></ion-icon>
+            Merkleroot: {{ block.merkleroot }}
+          </ion-item>
+          <ion-item>
+            <ion-icon name="cash" item-start></ion-icon>
+            Value: {{ block.value }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_name'>
+            <ion-icon name="leaf" item-start></ion-icon>
+            Miningpool Name: {{ block.miningpool_name }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_url'>
+            <ion-icon name="leaf" item-start></ion-icon>
+            Miningpool Url: {{ block.miningpool_url }}
+          </ion-item>
+          <ion-item *ngIf='block.miningpool_slug'>
+            <ion-icon name="leaf" item-start></ion-icon>
+            Miningpool Slug: {{ block.miningpool_slug }}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
 
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-left clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>{{ block.transactions }} Transactions</div>
-              </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small>
-                <ion-icon name="text"></ion-icon>
-                <div>{{ block.confirmations }} Confirmations</div>
-              </button>
-          </ion-col>
-        </ion-row>
+      <ion-row>
+        <ion-col>
+          <div padding-left icon-left clear small>
+            <ion-icon name="resize" color='primary'></ion-icon> {{ block.byte_size }} Bytes
+          </div>
+        </ion-col>
+        <ion-col>
+          <div padding-left icon-left clear small color='primary'>
+            <ion-icon name="barcode" color='primary'></ion-icon>Orphan: {{ block.is_orphan }}
+          </div>
+        </ion-col>
+      </ion-row>
 
-        <ion-row>
-          <ion-col>
-            <button ion-button icon-left clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>{{ block.is_orphan }} Orphan</div>
-              </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small>
-                <ion-icon name="text"></ion-icon>
-                <div>{{ block.byte_size }} Bytes</div>
-              </button>
-          </ion-col>
-        </ion-row>
-      </ion-card>
+    </ion-card>
+    <div *ngFor='let transaction of transactions' (click)="transactionTapped($evt, transaction)">
+      <div *ngIf='transactions'>
+        <ion-card>
+          <ion-item>
+            <ion-avatar item-start>
+              <ion-icon name="square"></ion-icon>
+            </ion-avatar>
+            <h2>{{ transaction.hash }}</h2>
+            <p>{{ transaction.time }}</p>
+          </ion-item>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Hash: {{ block.hash }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Difficulty: {{ block.difficulty }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Merkleroot: {{ block.merkleroot }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Prev Block: {{ block.prev_block }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Next Block: {{ block.next_block }}
+              </ion-item>
+              <ion-item>
+                <ion-icon name="leaf" item-start></ion-icon>
+                Value: {{ block.value }}
+              </ion-item>
+              <ion-item *ngIf='block.miningpool_name'>
+                <ion-icon name="link" item-start></ion-icon>
+                  Miningpool Name: <a href="{{ block.miningpool_url }}">{{ block.miningpool_name }}</a>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>{{ block.transactions }} Transactions</div>
+                </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div>{{ block.confirmations }} Confirmations</div>
+                </button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                  <ion-icon name="thumbs-up"></ion-icon>
+                  <div>{{ block.is_orphan }} Orphan</div>
+                </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                  <ion-icon name="text"></ion-icon>
+                  <div>{{ block.byte_size }} Bytes</div>
+                </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
     </div>
   </div>
 </ion-content>

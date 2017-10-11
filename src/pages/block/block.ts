@@ -6,7 +6,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TransactionPage } from '../transaction/transaction';
 
 @Component({
-  selector: 'block',
+  selector: 'page-block',
   templateUrl: 'block.html'
 })
 export class BlockPage {
