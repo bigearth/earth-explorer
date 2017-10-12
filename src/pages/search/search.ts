@@ -55,7 +55,7 @@ export class SearchPage {
         addressId: id
       });
     } else if(type === 'block') {
-      this.navCtrl.push('Blockpage', {
+      this.navCtrl.push('BlockPage', {
         blockId: id
       });
     } else if(type === 'transaction') {
