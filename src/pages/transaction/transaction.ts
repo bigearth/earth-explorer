@@ -5,7 +5,7 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 @IonicPage({
   segment: 'transactions/:transactionId'
-}
+})
 @Component({
   selector: 'transaction',
   templateUrl: 'transaction.html'

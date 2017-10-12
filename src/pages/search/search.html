@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal" (click)="nav('back')">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="nav('scan')">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf='address'>
+    <ion-card>
+      <ion-item>
+        <button large ion-button icon-left clear (click)="selected('address', address.address)">
+          <ion-icon name="square"></ion-icon> Address: {{ address.address }}
+        </button>
+      </ion-item>
+    </ion-card>
+  </div>
+  <div *ngIf='block'>
+    <ion-card>
+      <ion-item>
+        <button large ion-button icon-left clear (click)="selected('block', block.height)">
+          <ion-icon name="square"></ion-icon> Block: {{ block.height }}
+        </button>
+      </ion-item>
+    </ion-card>
+  </div>
+  <div *ngIf='transaction'>
+    <ion-card>
+      <ion-item>
+        <button large ion-button icon-left clear (click)="selected('transaction', transaction.hash)">
+          <ion-icon name="card"></ion-icon> Transaction: {{ transaction.hash }}
+        </button>
+      </ion-item>
+    </ion-card>
+  </div>
+  <div *ngIf='!address && ! block && !transaction'>
+    <ion-card>
+      <ion-item>
+        <h2>
+          <ion-icon name="thumbs-down"></ion-icon> No results
+        </h2>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

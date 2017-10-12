@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BlocktrailService } from '../../services/blocktrail.service';
+import { NavigationService } from '../../services/navigation.service';
 import { Block } from '../../services/block';
 import { Transaction } from '../../services/transaction';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
@@ -18,7 +19,8 @@ export class BlockPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public blocktrailService: BlocktrailService
+    public blocktrailService: BlocktrailService,
+    public navigationService: NavigationService
   ) {
     this.selectedBlock = navParams.get('blockId');
 
@@ -35,5 +37,9 @@ export class BlockPage {
     this.navCtrl.push('TransactionPage', {
       transactionId: transaction.hash
     });
+  }
+
+  nav(location) {
+    this.navCtrl.push(this.navigationService.nav(location));
   }
 }

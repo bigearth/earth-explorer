@@ -10,7 +10,10 @@ import { Block } from '../../services/block';
 })
 export class HomePage {
   blocks: Block[];
-  constructor(public navCtrl: NavController, public blocktrailService: BlocktrailService) {
+  constructor(
+    public navCtrl: NavController,
+    public blocktrailService: BlocktrailService,
+  ) {
     this.blocktrailService.getBlocks().then(rsp => {
       this.blocks = rsp.data;
     });

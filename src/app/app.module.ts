@@ -5,27 +5,31 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { BlocktrailService } from '../services/blocktrail.service';
+import { NavigationService } from '../services/navigation.service';
+import { ComponentsModule } from '../components/components.module'
+import { HomePageModule } from '../pages/home/home.module'
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
+    HomePageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     BlocktrailService,
+    NavigationService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

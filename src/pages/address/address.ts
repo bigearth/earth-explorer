@@ -6,7 +6,7 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 @IonicPage({
   segment: 'address/:addressId'
-}
+})
 @Component({
   selector: 'page-address',
   templateUrl: 'address.html'
