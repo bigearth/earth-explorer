@@ -11,6 +11,8 @@ export class NavigationService {
       location = 'SearchPage';
     } else if (location === 'scan') {
       location = 'ScanPage';
+    } else if (location === 'home') {
+      location = 'HomePage';
     }
     return location;
   }

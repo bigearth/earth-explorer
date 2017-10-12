@@ -4,12 +4,9 @@
   <div *ngIf='block'>
     <ion-card>
       <ion-item>
-        <h2>
-          <button large ion-button icon-left clear (click)="blockSelected($evt, block)">
-            <ion-icon name="square"></ion-icon>
-            <div>Block Height: {{ block.height | number }}</div>
-          </button>
-          </h2>
+        <h2 (click)="blockSelected($evt, block)">
+          <ion-icon name="square"></ion-icon> Block Height: {{ block.height | number }}
+        </h2>
         <p>{{ block.block_time | date:'medium' }}</p>
       </ion-item>
 
