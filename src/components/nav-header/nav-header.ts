@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NavigationService } from '../../services/navigation.service';
 
@@ -8,6 +8,8 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class NavHeaderComponent {
 
+  @Input() page: string;
+  @Input() data: any;
   constructor(
     public navCtrl: NavController,
     public navigationService: NavigationService

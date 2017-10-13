@@ -1,4 +1,5 @@
-<nav-header></nav-header>
+<nav-header *ngIf='!block'></nav-header>
+<nav-header *ngIf='block' [page]='"block"' [data]='block'></nav-header>
 
 <ion-content>
   <div *ngIf='block'>

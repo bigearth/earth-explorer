@@ -1,4 +1,5 @@
-<nav-header></nav-header>
+<nav-header *ngIf='!address'></nav-header>
+<nav-header *ngIf='address' [page]='"address"' [data]='address'></nav-header>
 
 <ion-content>
   <div *ngIf='address'>
@@ -53,12 +54,10 @@
       <div *ngIf='transactions'>
         <ion-card>
           <ion-item>
-            <h2>
-              <button large ion-button icon-left clear (click)="transactionSelected($evt, transaction)">
-                <ion-icon name="card"></ion-icon>
-                <div>{{ transaction.hash }}</div>
-              </button>
-              </h2>
+            <h2 (click)="transactionSelected($evt, transaction)">
+              <ion-icon name="card"></ion-icon> {{ transaction.hash }}
+              <ion-icon float-right name="arrow-forward"></ion-icon>
+            </h2>
             <p>{{ transaction.time | date:'medium' }}</p>
           </ion-item>
 

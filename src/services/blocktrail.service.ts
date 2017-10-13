@@ -8,8 +8,8 @@ export class BlocktrailService {
   constructor() {
     this.client = Blocktrail.BlocktrailSDK({
       network: "BCC",
-      apiKey: "f4b4845078a7f583e28f387f00e6d954f5cac26a",
-      apiSecret: "da449cedb5bc2bd28f462a9a04fdf47b8e07e441",
+      apiKey: "",
+      apiSecret: "",
       testnet: false
     });
   }

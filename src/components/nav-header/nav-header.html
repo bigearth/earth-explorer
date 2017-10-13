@@ -5,14 +5,14 @@
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>
+    <ion-title *ngIf='!data'>
       <button ion-button clear (click)="nav('home')">
         EARTH Explorer
       </button>
     </ion-title>
-    <ion-title *ngIf='block'>Block {{ block.height | number }}</ion-title>
-    <ion-title *ngIf='transaction'>Transaction {{ transaction.hash }}</ion-title>
-    <ion-title *ngIf='address'>Address {{ address.address }}</ion-title>
+    <ion-title *ngIf='data && (page === "block")'>Block {{ data.height | number }}</ion-title>
+    <ion-title *ngIf='data && (page === "transaction")'>Transaction {{ data.hash }}</ion-title>
+    <ion-title *ngIf='data && (page === "address")'>Address {{ data.address }}</ion-title>
     <!-- <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="nav('scan')">
         <ion-icon name="qr-scanner"></ion-icon>
