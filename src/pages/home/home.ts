@@ -12,17 +12,11 @@ import { Block } from '../../services/block';
 export class HomePage {
   blocks: Block[];
   constructor(
-    public navCtrl: NavController,
-    public blocktrailService: BlocktrailService,
+    public blocktrailService: BlocktrailService
   ) {
     this.blocktrailService.getBlocks().then(rsp => {
       this.blocks = rsp.data;
     });
   }
 
-  blockSelected(event, block) {
-    this.navCtrl.push('BlockPage', {
-      blockId: block.height
-    });
-  }
 }

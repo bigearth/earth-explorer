@@ -10,9 +10,21 @@
         EARTH Explorer
       </button>
     </ion-title>
-    <ion-title *ngIf='data && (page === "block")'>Block {{ data.height | number }}</ion-title>
-    <ion-title *ngIf='data && (page === "transaction")'>Transaction {{ data.hash }}</ion-title>
-    <ion-title *ngIf='data && (page === "address")'>Address {{ data.address }}</ion-title>
+    <ion-title *ngIf='data && (page === "block")'>
+      <button ion-button clear (click)="nav('home')">
+        Block {{ data.height | number }}
+      </button>
+    </ion-title>
+    <ion-title *ngIf='data && (page === "transaction")'>
+      <button ion-button clear (click)="nav('home')">
+        Transaction {{ data.hash }}
+      </button>
+    </ion-title>
+    <ion-title *ngIf='data && (page === "address")'>
+      <button ion-button clear (click)="nav('home')">
+        Address {{ data.address }}
+      </button>
+    </ion-title>
     <!-- <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="nav('scan')">
         <ion-icon name="qr-scanner"></ion-icon>

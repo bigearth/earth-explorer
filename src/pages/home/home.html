@@ -2,61 +2,6 @@
 
 <ion-content>
   <div *ngFor="let block of blocks">
-    <ion-card>
-      <ion-item>
-        <h2 (click)="blockSelected($evt, block)">
-          <ion-icon name="square"></ion-icon> Block Height: {{ block.height | number }}
-          <ion-icon float-right name="arrow-forward"></ion-icon>
-        </h2>
-        <p>{{ block.block_time | date:'medium' }}</p>
-      </ion-item>
-
-      <ion-card-content>
-        <ion-list>
-          <ion-item>
-            <ion-icon name="apps" item-start></ion-icon>
-              Hash: {{ block.hash }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="card" item-start></ion-icon>
-            Transactions: <ion-badge item-end>{{ block.transactions }}</ion-badge>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="checkbox" item-start></ion-icon>
-            Confirmations: <ion-badge item-end>{{ block.confirmations}}</ion-badge>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="lock" item-start></ion-icon>
-            Difficulty: {{ block.difficulty }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="contract" item-start></ion-icon>
-              Merkleroot: {{ block.merkleroot }}
-          </ion-item>
-          <ion-item>
-            <ion-icon name="logo-bitcoin" item-start></ion-icon>
-              Value: {{ (block.value / 100000000) | number }}
-          </ion-item>
-          <ion-item *ngIf='block.miningpool_name'>
-            <ion-icon name="link" item-start></ion-icon>
-              Miningpool Name: <a href="{{block.miningpool_url}}">{{ block.miningpool_name }}</a>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-
-      <ion-row>
-        <ion-col>
-          <div padding-left icon-left clear small>
-            <ion-icon name="resize" color='primary'></ion-icon> {{ block.byte_size }} Bytes
-          </div>
-        </ion-col>
-        <ion-col>
-          <div padding-left icon-left clear small color='primary'>
-            <ion-icon name="barcode" color='primary'></ion-icon>Orphan: {{ block.is_orphan }}
-          </div>
-        </ion-col>
-      </ion-row>
-
-    </ion-card>
+    <block [data]='block'></block>
   </div>
 </ion-content>

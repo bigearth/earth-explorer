@@ -1,0 +1,56 @@
+<ion-card *ngIf='data'>
+  <ion-item>
+    <h2 (click)="blockSelected($evt, block)">
+      <ion-icon name="square"></ion-icon> Block Height: {{ data.height | number }}
+      <ion-icon float-right name="arrow-forward"></ion-icon>
+    </h2>
+    <p>{{ data.block_time | date:'medium' }}</p>
+  </ion-item>
+
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="apps" item-start></ion-icon>
+          Hash: {{ data.hash }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+        Transactions: <ion-badge item-end>{{ data.transactions }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="checkbox" item-start></ion-icon>
+        Confirmations: <ion-badge item-end>{{ data.confirmations}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-start></ion-icon>
+        Difficulty: {{ data.difficulty }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="contract" item-start></ion-icon>
+          Merkleroot: {{ data.merkleroot }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-bitcoin" item-start></ion-icon>
+          Value: {{ (data.value / 100000000) | number }}
+      </ion-item>
+      <ion-item *ngIf='data.miningpool_name'>
+        <ion-icon name="link" item-start></ion-icon>
+          Miningpool Name: <a href="{{data.miningpool_url}}">{{ data.miningpool_name }}</a>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <div padding-left icon-left clear small>
+        <ion-icon name="resize" color='primary'></ion-icon> {{ data.byte_size }} Bytes
+      </div>
+    </ion-col>
+    <ion-col>
+      <div padding-left icon-left clear small color='primary'>
+        <ion-icon name="barcode" color='primary'></ion-icon>Orphan: {{ data.is_orphan }}
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
