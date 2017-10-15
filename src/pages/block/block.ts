@@ -16,6 +16,7 @@ export class BlockPage {
   selectedBlock: number | string;
   block: Block;
   transactions: Transaction[];
+  showLink: boolean = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

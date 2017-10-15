@@ -9,6 +9,7 @@ import { NavController } from 'ionic-angular';
 export class TransactionComponent {
 
   @Input() data: Transaction;
+  @Input() showLink: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -16,9 +17,11 @@ export class TransactionComponent {
   }
 
   transactionSelected(event, transaction) {
-    this.navCtrl.push('TransactionPage', {
-      transactionId: transaction.hash
-    });
+    if(this.showLink) {
+      this.navCtrl.push('TransactionPage', {
+        transactionId: transaction.hash
+      });
+    }
   }
 
   addressSelected(event, address) {

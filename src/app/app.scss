@@ -18,6 +18,10 @@
 ion-content.content {
   background: #f8f8f8;
   margin-top: 44px;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 @mixin common() {

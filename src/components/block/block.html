@@ -2,7 +2,7 @@
   <ion-item (click)="blockSelected($evt, data)">
     <h2>
       <ion-icon name="square"></ion-icon> Block {{ data.height | number }}
-      <ion-icon float-right name="arrow-forward"></ion-icon>
+      <ion-icon *ngIf='showLink' float-right name="arrow-forward"></ion-icon>
     </h2>
     <p>{{ data.block_time | date:'medium' }}</p>
   </ion-item>

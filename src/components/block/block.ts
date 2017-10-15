@@ -9,15 +9,18 @@ import { NavController } from 'ionic-angular';
 export class BlockComponent {
 
   @Input() data: Block;
+  @Input() showLink: boolean = true;
 
   constructor(
     public navCtrl: NavController,
   ) { }
 
   blockSelected(event, block) {
-    this.navCtrl.push('BlockPage', {
-      blockId: block.height
-    });
+    if(this.showLink) {
+      this.navCtrl.push('BlockPage', {
+        blockId: block.height
+      });
+    }
   }
 
 }

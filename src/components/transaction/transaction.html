@@ -2,7 +2,7 @@
   <ion-item (click)="transactionSelected($evt, data)">
     <h2>
       <ion-icon name="card"></ion-icon> {{ data.hash }}
-      <ion-icon float-right name="arrow-forward"></ion-icon>
+      <ion-icon *ngIf='showLink' float-right name="arrow-forward"></ion-icon>
     </h2>
     <p *ngIf='data.time'>{{ data.time | date:'medium' }}</p>
     <p *ngIf='data.first_seen_at'>{{ data.first_seen_at | date:'medium' }}</p>
