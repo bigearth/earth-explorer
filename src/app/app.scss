@@ -19,3 +19,17 @@ ion-content.content {
   background: #f8f8f8;
   margin-top: 44px;
 }
+
+@mixin common() {
+  ion-row:nth-child(odd) {
+    background: #eee;
+  }
+
+  ion-item:nth-child(even) {
+    background: #eee;
+  }
+  ion-col[col-6][padding] {
+    padding: 10px;
+    font-size: 1.2em;
+  }
+}

@@ -6,6 +6,7 @@
     <block [data]='block'></block>
 
     <div *ngIf='transactions'>
+      <h2 padding-left><ion-icon name="card"></ion-icon> Transactions</h2>
       <div *ngFor='let transaction of transactions'>
         <transaction [data]='transaction'></transaction>
       </div>
