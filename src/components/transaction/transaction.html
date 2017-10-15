@@ -1,0 +1,62 @@
+<ion-card>
+  <ion-item>
+    <h2 (click)="transactionSelected($evt, data)">
+      <ion-icon name="card"></ion-icon> {{ data.hash }}
+      <ion-icon float-right name="arrow-forward"></ion-icon>
+    </h2>
+    <p>{{ data.time | date:'medium' }}</p>
+  </ion-item>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="logo-bitcoin" item-start></ion-icon>
+        Value: {{ (data.estimated_value / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="checkbox" item-start></ion-icon>
+        Confirmations:
+        <ion-badge item-end>{{ data.confirmations}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+        Input Value: {{ (data.total_input_value / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+        Output Value: {{ (data.total_output_value / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-up" item-start></ion-icon>
+        Fee: {{ (data.total_fee / 100000000) | number }}
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+  <ion-list no-lines>
+    <ion-list-header>
+      Inputs
+    </ion-list-header>
+    <ion-item *ngFor="let input of data.inputs" (click)="addressSelected($evt, input.address)">
+      {{ input.address === null ? 'Coinbase' : input.address }}
+      <ion-icon *ngIf='input.address' name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-list-header>
+      Outputs
+    </ion-list-header>
+    <ion-item *ngFor="let output of data.outputs" (click)="addressSelected($evt, output.address)">
+      {{ output.address }}
+      <ion-icon name="arrow-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col>
+      <div padding-left icon-left clear small>
+        <ion-icon name="resize" color='primary'></ion-icon> {{ data.size }} Bytes
+      </div>
+    </ion-col>
+    <ion-col>
+      <div *ngIf='data.is_coinbase' padding-left icon-left clear small color='primary'>
+        <ion-icon name="barcode" color='secondary'></ion-icon>Coinbase
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-card>

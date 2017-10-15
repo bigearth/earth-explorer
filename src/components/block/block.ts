@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Block } from '../../services/block';
-import { IonicPage, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'block',

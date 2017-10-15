@@ -1,0 +1,47 @@
+<ion-card>
+  <ion-item>
+    <h2>
+      <ion-icon name="square"></ion-icon> Address: {{ data.address }}
+    </h2>
+  </ion-item>
+  <ion-card-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="apps" item-start></ion-icon>
+        Hash160: {{ data.hash160 }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="logo-bitcoin" item-start></ion-icon>
+        Balance: {{ (data.balance / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+        Received: {{ (data.received / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+        Sent: {{ (data.sent / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+        Unconfirmed Received: {{ (data.unconfirmed_received / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+        Unconfirmed Sent: {{ (data.unconfirmed_sent / 100000000) | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+        Unconfirmed Transactions: {{ data.unconfirmed_transactions | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
+        Total Transactions_in: {{ data.total_transactions_in | number }}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
+        Total Transactions_out: {{ data.total_transactions_out | number }}
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

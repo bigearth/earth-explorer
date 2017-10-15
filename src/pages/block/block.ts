@@ -33,11 +33,6 @@ export class BlockPage {
     });
   }
 
-  transactionSelected(event, transaction) {
-    this.navCtrl.push('TransactionPage', {
-      transactionId: transaction.hash
-    });
-  }
 
   nav(location) {
     this.navCtrl.push(this.navigationService.nav(location));

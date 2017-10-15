@@ -7,7 +7,7 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
   segment: 'transactions/:transactionId'
 })
 @Component({
-  selector: 'transaction',
+  selector: 'page-transaction',
   templateUrl: 'transaction.html'
 })
 export class TransactionPage {
@@ -25,11 +25,4 @@ export class TransactionPage {
     });
   }
 
-  addressSelected(event, address) {
-    if(address !== null) {
-      this.navCtrl.push('AddressPage', {
-        addressId: address
-      });
-    }
-  }
 }

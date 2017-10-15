@@ -1,6 +1,6 @@
-<ion-card *ngIf='data'>
+<ion-card>
   <ion-item>
-    <h2 (click)="blockSelected($evt, block)">
+    <h2 (click)="blockSelected($evt, data)">
       <ion-icon name="square"></ion-icon> Block Height: {{ data.height | number }}
       <ion-icon float-right name="arrow-forward"></ion-icon>
     </h2>
@@ -52,5 +52,4 @@
       </div>
     </ion-col>
   </ion-row>
-
 </ion-card>
