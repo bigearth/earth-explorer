@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <button ion-button clear (click)="nav('home')">
+        EARTH Explorer
+      </button>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="nav('search')">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 padding-left><ion-icon name="help-circle"></ion-icon> FAQ</h2>
+  <ion-card>
+    <ion-item>
+      <h2>
+        <ion-icon name="square"></ion-icon> Created By EARTH
+      </h2>
+      <p>Based in San Francisco</p>
+    </ion-item>
+    <ion-item>
+      <h3>What blockchain is this?</h3>
+      <p>This is a Bitcoin Cash block explorer.</p>
+    </ion-item>
+    <ion-item>
+      <h3>Is it open source?</h3>
+      <p>It is. It's licensed under the MIT Open Source License and is available on <a href='https://github.com/bigearth/earth-explorer'>github</a>.
+    </ion-item>
+    <ion-item>
+      <h3>Where do you get the data?</h3>
+      <p>From the <a href='https://www.blocktrail.com/api/docs'>Blocktrail API</a>.
+    </ion-item>
+  </ion-card>
+</ion-content>

@@ -13,6 +13,10 @@ export class NavigationService {
       location = 'ScanPage';
     } else if (location === 'home') {
       location = 'HomePage';
+    } else if (location === 'about') {
+      location = 'AboutPage';
+    } else if (location === 'faq') {
+      location = 'FaqPage';
     }
     return location;
   }

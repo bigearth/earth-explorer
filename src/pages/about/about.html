@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <button ion-button clear (click)="nav('home')">
+        EARTH Explorer
+      </button>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="nav('search')">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 padding-left><ion-icon name="flash"></ion-icon> About</h2>
+  <ion-card>
+    <ion-item>
+      <h2>
+        <ion-icon name="square"></ion-icon> Created By EARTH
+      </h2>
+      <p>Based in San Francisco</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" item-start></ion-icon>
+      <a href="mailto:connect@clone.earth?Subject=Hello" target="_top">connect.cardona@clone.earth</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-twitter" item-start></ion-icon>
+      <a href='https://twitter.com/Clone_Earth/'>@Clone_Earth</a>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="logo-facebook" item-start></ion-icon>
+      <a href='https://www.facebook.com/CloneEarth'>CloneEarth</a>
+    </ion-item>
+  </ion-card>
+</ion-content>

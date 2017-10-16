@@ -24,6 +24,12 @@ ion-content.content {
   user-select: text;
 }
 
+ion-menu {
+  ion-content.content {
+    margin-top: 0px;
+  }
+}
+
 @mixin common() {
   ion-row:nth-child(odd) {
     background: #eee;
