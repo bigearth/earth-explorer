@@ -3,7 +3,7 @@ import { BlocktrailService } from '../../services/blocktrail.service';
 import { NavigationService } from '../../services/navigation.service';
 import { Block } from '../../services/block';
 import { Transaction } from '../../services/transaction';
-import { NavController, NavParams, IonicPage } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, LoadingController } from 'ionic-angular';
 
 @IonicPage({
   segment: 'blocks/:blockId'
@@ -21,12 +21,19 @@ export class BlockPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public blocktrailService: BlocktrailService,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    public loadingCtrl: LoadingController
   ) {
     this.selectedBlock = navParams.get('blockId');
+    const loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      content: 'Getting Data...'
+    });
+    loading.present();
 
     this.blocktrailService.getBlock(this.selectedBlock).then(rsp => {
       this.block = rsp;
+      loading.dismiss();
     });
 
     this.blocktrailService.getBlockTransactions(this.selectedBlock).then(rsp => {

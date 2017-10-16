@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, LoadingController } from 'ionic-angular';
 
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { Block } from '../../services/block';
@@ -12,10 +12,19 @@ import { Block } from '../../services/block';
 export class HomePage {
   blocks: Block[];
   constructor(
-    public blocktrailService: BlocktrailService
+    public blocktrailService: BlocktrailService,
+    public loadingCtrl: LoadingController
   ) {
+
+    const loading = this.loadingCtrl.create({
+      spinner: 'dots',
+      content: 'Getting Data...'
+    });
+    loading.present();
+
     this.blocktrailService.getBlocks().then(rsp => {
       this.blocks = rsp.data;
+      loading.dismiss();
     });
   }
 
