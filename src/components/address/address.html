@@ -11,7 +11,7 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="logo-bitcoin" item-start></ion-icon>
-          {{ (data.balance / 100000000) | number }}
+          {{ data.balance | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
     </ion-row>
@@ -19,13 +19,13 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
-          {{ (data.received / 100000000) | number }}
+          {{ data.received | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
-          {{ (data.sent / 100000000) | number }}
+          {{ data.sent | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
     </ion-row>
@@ -33,13 +33,13 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-forward" item-start></ion-icon>
-          {{ (data.unconfirmed_received / 100000000) | number }}
+          {{ data.unconfirmed_received | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-back" item-start></ion-icon>
-          {{ (data.unconfirmed_sent / 100000000) | number }}
+          {{ data.unconfirmed_sent | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
     </ion-row>

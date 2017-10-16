@@ -13,7 +13,7 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="logo-bitcoin" item-start></ion-icon>
-          {{ (data.value / 100000000) | number }}
+          {{ data.value | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>

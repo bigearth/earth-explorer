@@ -14,7 +14,7 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="logo-bitcoin" item-start></ion-icon>
-          {{ (data.estimated_value / 100000000) | number }}
+          {{ data.estimated_value | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>
@@ -28,13 +28,13 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
-          {{ (data.total_input_value / 100000000) | number }}
+          {{ data.total_input_value | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>
         <div icon-left clear small color='primary'>
           <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
-          {{ (data.total_output_value / 100000000) | number }}
+          {{ data.total_output_value | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
     </ion-row>
@@ -42,7 +42,7 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-up" item-start></ion-icon>
-          Fee: {{ (data.total_fee / 100000000) | number }}
+          Fee: {{ data.total_fee | bitcoin | number:'1.1-8' }}
         </div>
       </ion-col>
       <ion-col padding col-6>
