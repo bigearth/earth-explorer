@@ -1,6 +1,7 @@
 <nav-header [page]='home'></nav-header>
 
 <ion-content>
+  <h2 padding-left><ion-icon name="logo-bitcoin"></ion-icon> Bitcoin Cash</h2>
   <div *ngFor="let block of blocks">
     <block [data]='block'></block>
   </div>
