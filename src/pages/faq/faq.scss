@@ -1,8 +1,12 @@
 page-faq {
   ion-content.content {
     margin-top: 0px;
+
+    hr {
+      height: 1px;
+    }
   }
-  
+
   button.button {
     color: black;
   }

@@ -19,49 +19,49 @@
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
-          Received: {{ (data.received / 100000000) | number }}
+          {{ (data.received / 100000000) | number }}
         </div>
       </ion-col>
       <ion-col padding col-6>
         <div icon-left clear small>
           <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
-          Sent: {{ (data.sent / 100000000) | number }}
+          {{ (data.sent / 100000000) | number }}
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col padding col-6>
         <div icon-left clear small>
-          <ion-icon name="arrow-dropright-circle" item-start></ion-icon>
-          Unconfirmed: {{ (data.unconfirmed_received / 100000000) | number }}
+          <ion-icon name="arrow-forward" item-start></ion-icon>
+          {{ (data.unconfirmed_received / 100000000) | number }}
         </div>
       </ion-col>
       <ion-col padding col-6>
         <div icon-left clear small>
-          <ion-icon name="arrow-dropleft-circle" item-start></ion-icon>
-          Unconfirmed: {{ (data.unconfirmed_sent / 100000000) | number }}
+          <ion-icon name="arrow-back" item-start></ion-icon>
+          {{ (data.unconfirmed_sent / 100000000) | number }}
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col padding col-6>
+        <div icon-left clear small>
+          <ion-icon name="card" item-start></ion-icon>
+          {{ data.total_transactions_in | number }}
+        </div>
+      </ion-col>
+      <ion-col padding col-6>
+        <div icon-left clear small>
+          <ion-icon name="cart" item-start></ion-icon>
+          {{ data.total_transactions_out | number }}
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col padding col-12>
         <div icon-left clear small>
-          <ion-icon name="card" item-start></ion-icon>
-          Unconfirmed Transactions: {{ data.unconfirmed_transactions | number }}
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col padding col-6>
-        <div icon-left clear small>
-          <ion-icon name="card" item-start></ion-icon>
-          Total In: {{ data.total_transactions_in | number }}
-        </div>
-      </ion-col>
-      <ion-col padding col-6>
-        <div icon-left clear small>
-          <ion-icon name="card" item-start></ion-icon>
-          Total Out: {{ data.total_transactions_out | number }}
+          <ion-icon name="close" item-start></ion-icon>
+          {{ data.unconfirmed_transactions | number }}
         </div>
       </ion-col>
     </ion-row>
