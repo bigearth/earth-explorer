@@ -1,0 +1,23 @@
+page-convert {
+  ion-content.content {
+    padding: 0;
+    margin-top: 0px;
+
+    hr {
+      height: 1px;
+    }
+  }
+
+  ion-col[col-4] {
+    text-align: center;
+
+    button {
+      background: #ddd;
+      padding: 40px;
+    }
+  }
+
+  button.button {
+    color: black;
+  }
+}

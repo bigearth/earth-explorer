@@ -17,6 +17,8 @@ export class NavigationService {
       location = 'AboutPage';
     } else if (location === 'faq') {
       location = 'FaqPage';
+    } else if (location === 'convert') {
+      location = 'ConvertPage';
     }
     return location;
   }
