@@ -12,28 +12,34 @@
 <ion-content>
   <div *ngIf='address'>
     <ion-card>
-      <ion-item>
-        <button large ion-button icon-left clear (click)="selected('address', address.address)">
+      <ion-item (click)="selected('address', address.address)">
+        <h2>
           <ion-icon name="square"></ion-icon> Address: {{ address.address }}
-        </button>
+          <ion-icon float-right name="arrow-forward"></ion-icon>
+        </h2>
       </ion-item>
     </ion-card>
   </div>
   <div *ngIf='block'>
     <ion-card>
-      <ion-item>
-        <button large ion-button icon-left clear (click)="selected('block', block.height)">
-          <ion-icon name="square"></ion-icon> Block: {{ block.height }}
-        </button>
+      <ion-item (click)="selected('block', block.height)">
+        <h2>
+          <ion-icon name="square"></ion-icon> Block {{ block.height | number }}
+          <ion-icon float-right name="arrow-forward"></ion-icon>
+        </h2>
+        <p>{{ block.block_time | date:'medium' }}</p>
       </ion-item>
     </ion-card>
   </div>
   <div *ngIf='transaction'>
     <ion-card>
-      <ion-item>
-        <button large ion-button icon-left clear (click)="selected('transaction', transaction.hash)">
-          <ion-icon name="card"></ion-icon> Transaction: {{ transaction.hash }}
-        </button>
+      <ion-item (click)="selected('transaction', transaction.hash)">
+        <h2>
+          <ion-icon name="card"></ion-icon> {{ transaction.hash }}
+          <ion-icon float-right name="arrow-forward"></ion-icon>
+        </h2>
+        <p *ngIf='transaction.time'>{{ transaction.time | date:'medium' }}</p>
+        <p *ngIf='transaction.first_seen_at'>{{ transaction.first_seen_at | date:'medium' }}</p>
       </ion-item>
     </ion-card>
   </div>
