@@ -6,6 +6,11 @@
       </button>
     </ion-buttons>
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="scanBarcode()">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

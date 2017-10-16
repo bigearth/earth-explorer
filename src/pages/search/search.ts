@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { BlocktrailService } from '../../services/blocktrail.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,8 @@ export class SearchPage {
 
   constructor(
     public navCtrl: NavController,
-    public blocktrailService: BlocktrailService
+    public blocktrailService: BlocktrailService,
+    private barcodeScanner: BarcodeScanner
   ) { }
 
   nav(location) {
@@ -25,6 +27,17 @@ export class SearchPage {
       this.navCtrl.push(location);
     }
   }
+
+  scanBarcode() {
+    console.log('asfd');
+    this.barcodeScanner.scan().then((barcodeData) => {
+     console.log(barcodeData);
+     // Success! Barcode data is here
+    }, (err) => {
+        // An error occurred
+    });
+  }
+
 
   getItems(ev: any) {
     // set val to the value of the searchbar
