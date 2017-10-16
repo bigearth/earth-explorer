@@ -8,15 +8,16 @@ export class BlocktrailService {
   constructor() {
     this.client = Blocktrail.BlocktrailSDK({
       network: "BCC",
-      apiKey: "",
-      apiSecret: "",
+      apiKey: "f4b4845078a7f583e28f387f00e6d954f5cac26a",
+      apiSecret: "da449cedb5bc2bd28f462a9a04fdf47b8e07e441",
       testnet: false
     });
   }
 
-  getBlocks(): Promise<any>{
+  getBlocks(page: number): Promise<any>{
     return this.client.allBlocks({
-      sort_dir: 'desc'
+      sort_dir: 'desc',
+      page: page
     }, (err, blocks) => {});
   }
 
@@ -24,8 +25,10 @@ export class BlocktrailService {
     return this.client.block(block, (err, block) => {});
   }
 
-  getBlockTransactions(block: number | string): Promise<any>{
-    return this.client.blockTransactions(block, (err, block) => {});
+  getBlockTransactions(block: number | string, page: number): Promise<any>{
+    return this.client.blockTransactions(block, {
+      page: page
+    }, (err, block) => {});
   }
 
   getTransaction(transaction: string): Promise<any>{
@@ -36,7 +39,9 @@ export class BlocktrailService {
     return this.client.address(address, (err, block) => {});
   }
 
-  getAddressTransactions(address: string): Promise<any>{
-    return this.client.addressTransactions(address, (err, block) => {});
+  getAddressTransactions(address: string, page: number): Promise<any>{
+    return this.client.addressTransactions(address, {
+      page: page
+    },(err, block) => {});
   }
 }
