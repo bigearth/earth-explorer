@@ -5,4 +5,8 @@
   <div *ngFor="let block of blocks">
     <block [data]='block'></block>
   </div>
+  <ion-infinite-scroll (ionInfinite)="fetchData($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>

@@ -11,6 +11,7 @@ import { Block } from '../../services/block';
 })
 export class HomePage {
   blocks: Block[];
+  page: number = 1;
   constructor(
     public blocktrailService: BlocktrailService,
     public loadingCtrl: LoadingController
@@ -22,10 +23,22 @@ export class HomePage {
     });
     loading.present();
 
-    this.blocktrailService.getBlocks().then(rsp => {
+    this.blocktrailService.getBlocks(1).then(rsp => {
+      ++this.page;
       this.blocks = rsp.data;
       loading.dismiss();
     });
+  }
+
+  fetchData(infiniteScroll) {
+    this.blocktrailService.getBlocks(this.page).then(rsp => {
+      ++this.page;
+      rsp.data.forEach(item => {
+        this.blocks.push(item);
+      });
+      infiniteScroll.complete();
+    });
+
   }
 
 }
