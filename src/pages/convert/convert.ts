@@ -11,7 +11,7 @@ export class ConvertPage {
   bitcoinTotal: string = '0';
   usdTotal: string = '0';
   exchangeRate: number = 0;
-  active: string = 'usd';
+  active: string = 'bcc';
 
   constructor(
     public navCtrl: NavController,
@@ -32,22 +32,27 @@ export class ConvertPage {
 
   calculate(val: any) {
     if(val !== 'C') {
-      let decimals: string = this.usdTotal.split('.')[1];
+      let decimals: string;
+      if(this.active === 'usd') {
+        decimals = this.usdTotal.split('.')[1];
 
-      let newUSDTotal: string;
-      if(!decimals || (decimals && decimals.length <= 1)) {
-        newUSDTotal = `${this.usdTotal}${val}`;
-      } else {
-        newUSDTotal = this.usdTotal;
+        if(!decimals || (decimals && decimals.length <= 1)) {
+          this.usdTotal = `${this.usdTotal}${val}`;
+        }
+
+        this.bitcoinTotal = (parseFloat(this.usdTotal) / this.exchangeRate).toString();
+      } else if(this.active === 'bcc') {
+        decimals = this.bitcoinTotal.split('.')[1];
+
+        if(!decimals || (decimals && decimals.length <= 7)) {
+          this.bitcoinTotal = `${this.bitcoinTotal}${val}`;
+        }
+
+        this.usdTotal = (parseFloat(this.bitcoinTotal) * this.exchangeRate).toString();
       }
-
-      this.usdTotal = newUSDTotal;
-      this.bitcoinTotal = (parseFloat(this.usdTotal) / this.exchangeRate).toString();
-
     } else  {
       this.usdTotal = '0';
       this.bitcoinTotal = '0';
-
     }
   }
 }
