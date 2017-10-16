@@ -17,6 +17,8 @@ export class BlockPage {
   block: Block;
   transactions: Transaction[];
   showLink: boolean = false;
+  page: number = 1;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,13 +38,24 @@ export class BlockPage {
       loading.dismiss();
     });
 
-    this.blocktrailService.getBlockTransactions(this.selectedBlock).then(rsp => {
+    this.blocktrailService.getBlockTransactions(this.selectedBlock, this.page).then(rsp => {
+      ++this.page;
       this.transactions = rsp.data;
     });
   }
 
-
   nav(location) {
     this.navCtrl.push(this.navigationService.nav(location));
+  }
+
+  fetchData(infiniteScroll) {
+    console.log('called');
+    this.blocktrailService.getBlockTransactions(this.selectedBlock, this.page).then(rsp => {
+      ++this.page;
+      rsp.data.forEach(item => {
+        this.transactions.push(item);
+      });
+      infiniteScroll.complete();
+    });
   }
 }

@@ -38,7 +38,5 @@ export class HomePage {
       });
       infiniteScroll.complete();
     });
-
   }
-
 }
