@@ -49,7 +49,6 @@ export class BlockPage {
   }
 
   fetchData(infiniteScroll) {
-    console.log('called');
     this.blocktrailService.getBlockTransactions(this.selectedBlock, this.page).then(rsp => {
       ++this.page;
       rsp.data.forEach(item => {

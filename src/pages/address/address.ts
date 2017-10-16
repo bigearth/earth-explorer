@@ -15,6 +15,8 @@ export class AddressPage {
   selectedAddress: string;
   address: Address;
   transactions: Transaction[];
+  page: number = 1;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -34,7 +36,8 @@ export class AddressPage {
       loading.dismiss();
     });
 
-    this.blocktrailService.getAddressTransactions(this.selectedAddress).then(rsp => {
+    this.blocktrailService.getAddressTransactions(this.selectedAddress, this.page).then(rsp => {
+      ++this.page;
       this.transactions = rsp.data;
     });
   }
@@ -42,6 +45,16 @@ export class AddressPage {
   transactionSelected(event, transaction) {
     this.navCtrl.push('TransactionPage', {
       transactionId: transaction.hash
+    });
+  }
+
+  fetchData(infiniteScroll) {
+    this.blocktrailService.getAddressTransactions(this.selectedAddress, this.page).then(rsp => {
+      ++this.page;
+      rsp.data.forEach(item => {
+        this.transactions.push(item);
+      });
+      infiniteScroll.complete();
     });
   }
 }
