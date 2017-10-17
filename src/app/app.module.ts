@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
+import { Explorer } from './app.component';
 import { BlocktrailService } from '../services/blocktrail.service';
 import { NavigationService } from '../services/navigation.service';
 import { ComponentsModule } from '../components/components.module'
@@ -13,17 +13,17 @@ import { HomePageModule } from '../pages/home/home.module'
 
 @NgModule({
   declarations: [
-    MyApp,
+    Explorer,
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
     HomePageModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(Explorer)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Explorer,
   ],
   providers: [
     StatusBar,

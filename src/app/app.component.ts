@@ -9,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class Explorer {
   rootPage: any = HomePage;
   @ViewChild(Nav) nav: Nav;
 
