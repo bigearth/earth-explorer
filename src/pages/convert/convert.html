@@ -18,23 +18,57 @@
 
 <ion-content>
   <h2 padding-left><ion-icon name="calculator"></ion-icon> Convert</h2>
-  <ion-grid>
-    <ion-row>
-      <ion-col padding col-12>
-        <div icon-left clear small>
-          {{ bitcoinTotal | number:'1.0-8' }} BCC
-        </div>
-      </ion-col>
-    </ion-row>
+  <div class='toggle' (click)='toggleActive()'>
+    <ion-grid *ngIf='this.active === "bcc"'>
+      <ion-row>
+        <ion-col padding col-12>
+          <div>
+            {{ usdTotal | number:'1.0-2' }} USD
+          </div>
+        </ion-col>
+      </ion-row>
 
-    <ion-row>
-      <ion-col padding col-12>
-        <div icon-left clear small>
-          {{ usdTotal | number:'1.0-2' }} USD
-        </div>
-      </ion-col>
-    </ion-row>
+      <ion-row>
+        <ion-col padding col-12>
+          <ion-icon name="shuffle"></ion-icon>
+        </ion-col>
+      </ion-row>
 
+      <ion-row>
+        <ion-col padding col-12>
+          <div>
+            {{ bitcoinTotal | number:'1.0-8' }} BCC
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf='this.active === "usd"'>
+      <ion-row>
+        <ion-col padding col-12>
+          <div icon-left clear small>
+            {{ bitcoinTotal | number:'1.0-8' }} BCC
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col padding col-12>
+          <ion-icon name="shuffle"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col padding col-12>
+          <div icon-left clear small>
+            {{ usdTotal | number:'1.0-2' }} USD
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-grid id='calculator'>
     <ion-row>
       <ion-col col-4>
         <button icon-left clear small (click)='calculate(1)'>

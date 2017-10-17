@@ -6,6 +6,14 @@ page-convert {
     hr {
       height: 1px;
     }
+
+    .toggle {
+      font-size: 1.5em;
+    }
+
+    #calculator {
+      max-width: 400px;
+    }
   }
 
   ion-col[col-4] {
@@ -13,7 +21,9 @@ page-convert {
 
     button {
       background: #ddd;
-      padding: 40px;
+      width: 80px;
+      height: 80px;
+      font-size: 2.5em;
     }
   }
 

@@ -30,7 +30,15 @@ export class ConvertPage {
     })
   }
 
-  calculate(val: any) {
+  toggleActive(): void {
+    if(this.active === 'bcc') {
+      this.active = 'usd';
+    } else if(this.active === 'usd') {
+      this.active = 'bcc';
+    }
+  }
+
+  calculate(val: any): void {
     if(val !== 'C') {
       let decimals: string;
       if(this.active === 'usd') {
