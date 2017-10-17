@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BlocktrailService } from '../../services/blocktrail.service';
 import { IonicPage, NavController, LoadingController } from 'ionic-angular';
+import { NavigationService } from '../../services/navigation.service';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,8 @@ export class ConvertPage {
   constructor(
     public navCtrl: NavController,
     public blocktrailService: BlocktrailService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public navigationService: NavigationService
   ) {
     const loading = this.loadingCtrl.create({
       spinner: 'dots',
@@ -62,5 +64,9 @@ export class ConvertPage {
       this.usdTotal = '0';
       this.bitcoinTotal = '0';
     }
+  }
+
+  nav(location) {
+    this.navCtrl.push(this.navigationService.nav(location));
   }
 }

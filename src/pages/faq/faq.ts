@@ -11,11 +11,10 @@ export class FaqPage {
 
   constructor(
     public navCtrl: NavController,
-    public navigationService: NavigationService) {
-  }
+    public navigationService: NavigationService
+  ) { }
 
   nav(location) {
     this.navCtrl.push(this.navigationService.nav(location));
   }
-
 }
